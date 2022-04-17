@@ -4,7 +4,7 @@
  * @Autor: 钟奇峰
  * @Date: 2022-04-10 16:55:54
  * @LastEditors: 钟奇峰
- * @LastEditTime: 2022-04-16 20:41:03
+ * @LastEditTime: 2022-04-17 20:10:22
 -->
 
 <script setup>
@@ -13,7 +13,7 @@
 import axios from 'axios'
 async function fn() {
   const { data } = await axios.get('/api/get')
-  const res = await axios.post('http://175.178.51.126:8091/smallA/login', {})
+  const res = await axios.post('http://175.178.51.126:8091/smallA/login')
   console.log(data)
 }
 fn()
