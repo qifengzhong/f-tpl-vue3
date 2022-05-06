@@ -4,7 +4,7 @@
  * @Autor: 钟奇峰
  * @Date: 2022-04-11 00:02:41
  * @LastEditors: 钟奇峰
- * @LastEditTime: 2022-04-16 14:00:58
+ * @LastEditTime: 2022-04-20 18:52:22
  */
 
 module.exports = {
@@ -181,7 +181,7 @@ module.exports = {
       'after': true
     }],
     'space-before-blocks': [2, 'always'],
-    'space-before-function-paren': [2, 'error'],
+    'space-before-function-paren': 0,
     'space-in-parens': [2, 'never'],
     'space-infix-ops': 2,
     'space-unary-ops': [2, {

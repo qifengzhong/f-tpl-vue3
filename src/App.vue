@@ -4,27 +4,14 @@
  * @Autor: 钟奇峰
  * @Date: 2022-04-10 16:55:54
  * @LastEditors: 钟奇峰
- * @LastEditTime: 2022-04-17 20:10:22
+ * @LastEditTime: 2022-05-07 00:10:55
 -->
-
-<script setup>
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
-import axios from 'axios'
-async function fn() {
-  const { data } = await axios.get('/api/get')
-  const res = await axios.post('http://175.178.51.126:8091/smallA/login')
-  console.log(data)
-}
-fn()
-</script>
-
 <template>
   <!-- <img alt="Vue logo" src="./assets/logo.png" />
   <HelloWorld msg="Hello Vue 3 + Vite" /> -->
   <el-card>
     <div
-      class="border border-blue-300 shadow rounded-md p-4 max-w-sm w-full mx-auto"
+      class="word border border-blue-300 shadow rounded-md p-4 max-w-sm w-full mx-auto"
     >
       <div class="animate-pulse flex space-x-4">
         <div class="rounded-full bg-blue-400 h-12 w-12"></div>
@@ -37,10 +24,40 @@ fn()
         </div>
       </div>
     </div>
+    <h1>{{ a }}</h1>
   </el-card>
 </template>
 
-<style>
+<script>
+import { ref, getCurrentInstance } from 'vue'
+export default {
+  components: {},
+  props: [],
+  emits: [],
+  setup(props, ctx) {
+    const a = ref('彭于晏')
+    return {
+      a
+    }
+  },
+  async created() {
+    const { proxy } = getCurrentInstance()
+    const _http = proxy.$http
+    _http.v(proxy)
+    const res = await _http.login.loginIn({
+      bindName: 'a',
+      // 执行到这里时，已经拿回了数据
+      success: (res, bind) => {
+        bind(res.data)
+      }
+    })
+    console.log(res)
+    console.log(this.a)
+  }
+}
+</script>
+
+<style lang="postcss">
 .word {
   @apply text-blue-500 font-bold;
 }
